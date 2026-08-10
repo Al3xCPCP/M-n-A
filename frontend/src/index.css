@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;500;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 240 6% 4%;
+        --foreground: 0 0% 100%;
+        --card: 240 5% 7%;
+        --card-foreground: 0 0% 100%;
+        --popover: 240 5% 7%;
+        --popover-foreground: 0 0% 100%;
+        --primary: 20 100% 50%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 240 4% 12%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 4% 12%;
+        --muted-foreground: 240 5% 65%;
+        --accent: 240 4% 15%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 240 4% 16%;
+        --input: 240 4% 16%;
+        --ring: 20 100% 50%;
+        --radius: 0.25rem;
+        --signal: 20 100% 50%;
+        --highlight: 222 100% 50%;
+        --ok: 160 84% 39%;
+        --warn: 38 92% 50%;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: "IBM Plex Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+}
+
+h1, h2, h3, .font-display {
+    font-family: "Chivo", sans-serif;
+}
+
+.mono, code, pre {
+    font-family: "IBM Plex Mono", monospace;
+}
+
+::selection {
+    background: #ff4f00;
+    color: #fff;
+}
+
+.overline {
+    @apply text-[10px] uppercase tracking-[0.2em] text-muted-foreground;
+    font-family: "IBM Plex Mono", monospace;
+}
+
+.panel {
+    @apply border border-border bg-[#121214];
+}
+
+.grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #09090b; }
+::-webkit-scrollbar-thumb { background: #2b2b30; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+@keyframes riseIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: riseIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+}
+.pulse-dot { animation: pulseDot 1.8s ease-in-out infinite; }
+
+@layer base {
+    * { @apply border-border; }
+    [data-debug-wrapper="true"] { display: contents !important; }
+}

@@ -1,0 +1,108 @@
+{
+  "theme_strategy": {
+    "mode": "dark",
+    "rationale": "High-contrast dark mode reduces eye strain for all-day institutional use while allowing AI signals and data highlights to pop. Based on the 'Swiss & High-Contrast' archetype crossed with 'Technical Terminal'."
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Chivo",
+      "body": "IBM Plex Sans",
+      "mono_data": "IBM Plex Mono",
+      "installation": "Add Google Fonts links for Chivo, IBM Plex Sans, and IBM Plex Mono."
+    },
+    "hierarchy": {
+      "H1_Hero": "text-4xl tracking-tighter font-light",
+      "H2_Section": "text-2xl tracking-tight font-medium",
+      "H3_Widget": "text-lg font-medium",
+      "Body": "text-sm leading-relaxed",
+      "Labels_Overlines": "text-xs uppercase tracking-[0.2em] font-mono",
+      "Data_Metrics": "text-3xl font-mono tracking-tight"
+    }
+  },
+  "colors": {
+    "palette": {
+      "background_base": "#09090b",
+      "surface_level_1": "#121214",
+      "surface_level_2": "#18181b",
+      "border": "#27272a",
+      "text_primary": "#ffffff",
+      "text_secondary": "#a1a1aa",
+      "accent_ai_signal": "#FF4F00",
+      "accent_success": "#10b981",
+      "accent_warning": "#f59e0b",
+      "accent_highlight": "#0055FF"
+    },
+    "rules": [
+      "True gray surfaces instead of pure black to preserve depth.",
+      "Use #FF4F00 (International Orange) specifically for AI sourcing signals and agent activities.",
+      "Never use pure transparent backgrounds over content; always use solid surfaces or backdrop-blur with a tint.",
+      "Hover states must explicitly set text color (e.g., hover:bg-zinc-800 hover:text-white)."
+    ]
+  },
+  "visual_enhancers": {
+    "surfaces": [
+      "Dashboard widgets should use Grid Borders (Technical Look) with border-collapse and border-r/border-b on items, or flat solid backgrounds with 1px border (#27272a).",
+      "No heavy box-shadows. Rely on 1px borders and slight background lightness shifts.",
+      "Use Glassmorphism (Crystal variant: bg-black/60 backdrop-blur-xl border-white/10) ONLY for sticky headers or floating agent-run consoles."
+    ],
+    "micro_interactions": [
+      "Hover on data rows: subtle bg-zinc-900 transition.",
+      "AI Agent Run logs: Use 'Terminal Retro' aesthetic with monospace font and subtle left-border highlight."
+    ]
+  },
+  "grids_and_layouts": {
+    "spacing": "Dense and compact spacing for data visibility. Standardize on p-4 or p-6 for widget padding.",
+    "dashboard_grid": "High Density Grid Protocol (Mode B). Base Grid: grid-cols-1 md:grid-cols-3 lg:grid-cols-4. Tight gaps (gap-4 or gap-6). Widgets must stretch to fill (h-full).",
+    "bento_rules": "Pipeline Kanban: Horizontal scrolling overflow with fixed column widths. Target details: Bento grid with composite score as the dominant col-span-1 row-span-2 widget."
+  },
+  "component_rules": {
+    "ui_library": "Shadcn UI (Tailwind CSS, React primitives).",
+    "modifications": [
+      "Go cardless where possible. Replace Shadcn default cards with flat rectangular divs having 1px borders and 0px radius (sharp edges) or max 4px radius.",
+      "Tables: Compact size, left-aligned data, right-aligned numbers. Highlight AI-enriched fields with an accent left-border or subtle background tint.",
+      "Charts: Use Shadcn Charts (Recharts). Stick to minimalist line/bar charts without grid lines.",
+      "Ensure components are written in .js/.jsx instead of .tsx."
+    ]
+  },
+  "media": {
+    "icons": "Use Phosphor Icons (@phosphor-icons/react) for a technical, crisp look.",
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1758073519996-6d3c63b4922c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGRhdGElMjBncmFwaCUyMGRhcmt8ZW58MHx8fHwxNzg2MzQzMTk1fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract blue glowing dots forming wave patterns",
+        "category": "Sourcing Graph Background or AI processing visualizer"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwxfHxleGVjdXRpdmUlMjBwb3J0cmFpdCUyMG9mZmljZXxlbnwwfHx8fDE3ODYzNDMxOTV8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Executive portrait man",
+        "category": "Contact Avatar"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwzfHxleGVjdXRpdmUlMjBwb3J0cmFpdCUyMG9mZmljZXxlbnwwfHx8fDE3ODYzNDMxOTV8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Executive portrait woman",
+        "category": "Contact Avatar"
+      }
+    ]
+  },
+  "3d_and_visualizations": {
+    "libraries": [
+      "Recharts (via Shadcn) for standard bar/line analytics.",
+      "React Force Graph (2D or 3D) for the Sourcing Graph (TED procurement, funding, warm paths)."
+    ],
+    "rules": "Visualizations must use transparent backgrounds. Nodes in the force graph should utilize the palette accent colors based on entity type."
+  },
+  "accessibility": {
+    "contrast": "Ensure APCA contrast compliance. Text-secondary against surface_level_1 must be legible.",
+    "testing": "All interactive elements (pipeline stages, enrichment triggers, VDR folders) MUST include data-testid attribute (e.g., data-testid='trigger-enrichment-button')."
+  },
+  "instructions_to_main_agent": [
+    "Build the dashboard using React, Tailwind CSS, and Shadcn primitives.",
+    "Implement a strict layout: Sidebar navigation on the left, main content area on the right. Content area should have a fixed or sticky top header with Breadcrumbs and MCP Gateway status.",
+    "The Deal Pipeline Kanban should be horizontally scrollable while keeping the rest of the layout fixed.",
+    "The Agent Run audit console should look like a terminal (bg-black, text-xs, font-mono, green or orange highlights) simulating streaming logs.",
+    "For the VDR, use a dual-pane layout: folder tree on the left, file list on the right.",
+    "Apply the styling rules consistently, specifically avoiding generic centered layouts and ensuring high information density.",
+    "Ensure all components use standard .js/.jsx syntax as per the project requirements."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight. Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients. Don't make generic centered layouts, simplistic gradients, and uniform styling. Create depth through layered design elements with z-index hierarchy. Use glass-morphism effects with backdrop filters (12-24px blur). You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms. You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text. Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style. NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons. Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead. Use 2-3x more spacing than feels comfortable. Cramped designs look cheap. Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary. Main agent relies on these image URLs. Missing categories (especially sponsor logos) = main agent will use placeholder text which is FORBIDDEN. Prioritize using pre-existing components from src/components/ui when applicable. Create new components that match the style and conventions of existing components when needed. Examine existing components to understand the project's component patterns before creating new ones. Use sonner for toasts. Sonner component are located in /app/src/components/ui/sonner.js."
+}
